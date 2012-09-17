@@ -1,0 +1,25 @@
+{
+  "author": "David Howell <david@dynamicmethods.com.au>",
+  "description": "A backend for StatsD to emit stats to mongodb.",
+  "name": "mongo-statsd-backend",
+  "version": "0.0.4",
+  "main": "lib/index.js",
+  "dependencies": {
+    "async": ">=0.1",
+    "mongodb": ">=1.0"
+  },
+  "devDependencies": {},
+  "optionalDependencies": {},
+  "engines": {
+    "node": "*"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dynmeth/mongo-statsd-backend.git"
+  },
+  "keywords": [
+    "statsd",
+    "mongodb"
+  ], 
+  "license": "MIT"
+}
