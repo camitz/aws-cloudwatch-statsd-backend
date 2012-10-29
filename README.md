@@ -11,3 +11,4 @@
 ## Configuration
 - [mongodb](https://github.com/appsattic/node-awssum)
 
+[![endorse](http://api.coderwall.com/camitz/endorsecount.png)](http://coderwall.com/camitz)
