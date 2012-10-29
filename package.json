@@ -2,9 +2,11 @@
   "author": "Martin Camitz<martin.camitz@simpletask.se>",
   "description": "A backend for StatsD to emit stats to Amazon's AWS CloudWatch.",
   "name": "aws-cloudwatch-statsd-backend",
-  "version": "1.0.0",
+  "version": "1.1.1",
   "main": "lib/aws-cloudwatch-statsd-backend.js",
   "dependencies": {
+	"fmt": "~0.4",
+	"awssum": "~0.10"
   },
   "devDependencies": {},
   "optionalDependencies": {},
@@ -17,7 +19,10 @@
   },
   "keywords": [
     "statsd",
-    "cloudwatch"
+    "cloudwatch",
+    "aws",
+    "amazon",
+    "cloudwatchappender"
   ], 
-  "license": "MIT"
+  "license": {"type": "MIT", "url": "https://github.com/camitz/aws-cloudwatch-statsd-backend/blob/master/LICENSE.md"}
 }
