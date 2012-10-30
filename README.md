@@ -72,7 +72,7 @@ The following overrides the default and any provided namespace or metric name wi
         }
     }
 
-Using the option *processKeyForNames* (default is false) you can parse the bucket name for namespace and metric name. The backend will use the last component of a bucket name comprised of slash (/), dot (.) or dash (-) separated parts as the metric name. The remaining leading parts will be used as namespace.
+Using the option *processKeyForNamespace* (default is false) you can parse the bucket name for namespace in addition to metric name. The backend will use the last component of a bucket name comprised of slash (/), dot (.) or dash (-) separated parts as the metric name. The remaining leading parts will be used as namespace. 
 
     {
         backends: [ "aws-cloudwatch-statsd-backend" ],
@@ -89,7 +89,7 @@ For example, sending StatsD the following
 
     App.Controller.Action.Request:1|c
 
-is will produce the equivalent to the former configuration example.
+is will produce the equivalent to the former configuration example. Note that both will be suppressed if overriden as in the former configuration example.
 
 ## Tutorial
 
