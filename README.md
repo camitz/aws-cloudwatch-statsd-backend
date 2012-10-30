@@ -72,7 +72,7 @@ The following overrides the default and any provided namespace or metric name wi
         }
     }
 
-Using the option *processKeyForNamespace* (default is false) you can parse the bucket name for namespace in addition to metric name. The backend will use the last component of a bucket name comprised of slash (/), dot (.) or dash (-) separated parts as the metric name. The remaining leading parts will be used as namespace. 
+Using the option *processKeyForNamespace* (default is false) you can parse the bucket name for namespace in addition to metric name. The backend will use the last component of a bucket name comprised of slash (/), dot (.) or dash (-) separated parts as the metric name. The remaining leading parts will be used as namespace. Separators will be replaced with slashes (/).
 
     {
         backends: [ "aws-cloudwatch-statsd-backend" ],
