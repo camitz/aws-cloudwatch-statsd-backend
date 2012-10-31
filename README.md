@@ -2,9 +2,9 @@
 
 ## Overview
 
-[StatsD](https://github.com/etsy/statsd) is a smart Node.js package that collects and aggregates statistics from differents apps sent over the UDP protocol. At a set time interval it forwards the aggregated data to a configured backend. It is pluggable with several backends available, the default being [graphite](https://github.com/graphite-project/graphite-web), a python/django monitoring tool.
+[StatsD](https://github.com/etsy/statsd) is a smart Node.js package that collects and aggregates statistics from differents apps sent over the UDP protocol. At a set time interval it forwards the aggregated data to a configured backend. It is pluggable with several backends available, the most popular being [Graphite](https://github.com/graphite-project/graphite-web), a python/django monitoring tool.
 
-With this package you can replace Graphite in favour of [AWS Cloudwatch](http://aws.amazon.com/cloudwatch/) for your monitoring purposes, appropriate for sites on the Amazon EC2 cloud.
+With **aws-cloudwatch-statsd-backend** you can replace Graphite in favour of [AWS Cloudwatch](http://aws.amazon.com/cloudwatch/) for your monitoring purposes, appropriate for sites on the Amazon EC2 cloud.
 
 Counters, timers, gauges and sets are all supported.
 
