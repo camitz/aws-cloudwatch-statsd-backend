@@ -68,7 +68,11 @@ The following overrides the default and any provided namespace or metric name wi
             secretAccessKey: 'YOUR_SECRET_ACCESS_KEY', 
             region: 'YOUR_REGION',
             namespace: 'App/Controller/Action', 
-            metricName: 'Request'
+            metricName: 'Request',
+            dimensions: [
+                { Name: "dim1", Value: "val1" },
+                { Name: "dim2", Value: "val2" }
+            ]
         }
     }
 
@@ -81,7 +85,7 @@ Using the option *processKeyForNamespace* (default is false) you can parse the b
             accessKeyId: 'YOUR_ACCESS_KEY_ID', 
             secretAccessKey: 'YOUR_SECRET_ACCESS_KEY', 
             region: 'YOUR_REGION',
-            processKeyForNames:true
+            processKeyForNamespace:true
         }
     }
 
@@ -90,6 +94,14 @@ For example, sending StatsD the following
     App.Controller.Action.Request:1|c
 
 is will produce the equivalent to the former configuration example. Note that both will be suppressed if overriden as in the former configuration example.
+
+Dimensions can be specified in the statistic name, using a special __name_value syntaxis. For instance:
+
+    App.Controller.Action.__HostName_server1:1|c
+
+Will set the "HostName" dimension to the value "server1".
+
+If a string is provided to the processKeyForNamespace option (instead of the boolean true), that string will be used as a regular expression for splitting the stat name in namespace/dimension components (instead of the default '[\.\-/]').
 
 ## Tutorial
 
