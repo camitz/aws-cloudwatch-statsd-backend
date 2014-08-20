@@ -5,8 +5,7 @@
   "version": "1.2.0",
   "main": "lib/aws-cloudwatch-statsd-backend.js",
   "dependencies": {
-	"fmt": "~0.4",
-	"awssum": "~0.10"
+    "aws-sdk": "~2.0.15"
   },
   "devDependencies": {},
   "optionalDependencies": {},
