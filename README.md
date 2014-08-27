@@ -91,6 +91,23 @@ For example, sending StatsD the following
 
 is will produce the equivalent to the former configuration example. Note that both will be suppressed if overriden as in the former configuration example.
 
+## Whitelisting Metrics
+
+Using cloudwatch will incur a cost for each metric sent. In order to control your costs, you can optionally whitelist (by full metric name) those metrics sent to cloudwatch. For example:
+
+    {
+        backends: [ "aws-cloudwatch-statsd-backend" ],
+        cloudwatch: 
+        {
+            accessKeyId: 'YOUR_ACCESS_KEY_ID', 
+            secretAccessKey: 'YOUR_SECRET_ACCESS_KEY', 
+            region: 'YOUR_REGION',
+            whitelist: ['YOUR_FULL_METRIC_NAME']
+        }
+    }
+
+The above configuration would only sent the metric named 'YOUR_FULL_METRIC_NAME' to cloudwatch. As this is an array, you can specify multiple metrics. This is useful if you are using multiple backends e.g. mysql backend and want to send some metrics cloudwatch (due to the associated cost) and all the metrics together to another backend. It is also useful if you want to limit the metrics you use in cloudwatch to those that raise alarms as part of your wider AWS hosted system.
+
 ## Tutorial
 
 This project was launched with a following [blog post/tutorial](http://blog.simpletask.se/post/aggregating-monitoring-statistics-for-aws-cloudwatch) describing the implementation chain from log4net to Cloudwatch on a Windows system.
