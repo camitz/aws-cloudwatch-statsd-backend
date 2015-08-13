@@ -14,7 +14,7 @@ You need node.js installed on your system aswell as StatsD. Follow the instructi
 
 The CloudWatch backend is an npm package that can be installed with the npm command which comes with your installation of node.js. Go to the [npm site](https://npmjs.org/) for more information.
 
-npm install aws-cloudwatch-statsd-backend
+    npm install aws-cloudwatch-statsd-backend
 
 The package has two depdencies that should be installed automatically, [awssum](https://npmjs.org/package/awssum) and [fmt](https://npmjs.org/package/fmt). Awssum is a node.js package encapsulating the AWS API.
 
