@@ -108,6 +108,20 @@ Using cloudwatch will incur a cost for each metric sent. In order to control you
 
 The above configuration would only sent the metric named 'YOUR_FULL_METRIC_NAME' to cloudwatch. As this is an array, you can specify multiple metrics. This is useful if you are using multiple backends e.g. mysql backend and want to send some metrics cloudwatch (due to the associated cost) and all the metrics together to another backend. It is also useful if you want to limit the metrics you use in cloudwatch to those that raise alarms as part of your wider AWS hosted system.
 
+## Using AWS Roles to obtain credentials
+
+A preferable approach to obtaining account credentials is instead to query the Metadata Service to obtain IAM security credentials for a given role. If iamRole is set to 'any' then any available credentials found on the metadata service will instead be used. For example:
+
+    {
+        backends: [ "aws-cloudwatch-statsd-backend" ],
+        cloudwatch:
+        {
+            iamRole: 'YOUR_ROLE_NAME',
+            region: 'YOUR_REGION',
+            whitelist: ['YOUR_FULL_METRIC_NAME']
+        }
+    }
+
 ## Tutorial
 
 This project was launched with a following [blog post/tutorial](http://blog.simpletask.se/post/aggregating-monitoring-statistics-for-aws-cloudwatch) describing the implementation chain from log4net to Cloudwatch on a Windows system.
