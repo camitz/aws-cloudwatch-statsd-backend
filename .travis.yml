@@ -1,6 +1,0 @@
-language: node_js
-
-deploy:
-  provider: npm
-  email: j.delivuk@gmail.com
-  api_key: $npm_api_key
