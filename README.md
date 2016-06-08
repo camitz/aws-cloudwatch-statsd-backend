@@ -122,6 +122,40 @@ A preferable approach to obtaining account credentials is instead to query the M
         }
     }
 
+## Multi-region support
+
+If you wish to send cloudwatch metrics to multiple regions at once, instead of 
+
+    {
+        backends: [ "aws-cloudwatch-statsd-backend" ],
+        cloudwatch: 
+        {
+            accessKeyId: 'YOUR_ACCESS_KEY_ID', 
+            secretAccessKey:'YOUR_SECRET_ACCESS_KEY', 
+            region:"YOUR_REGION"
+        }
+    }
+    
+you can use the `instances` key under `cloudwatch` to configure a list of configurations.
+
+    {
+        backends: ["aws-cloudwatch-statsd-backend"],
+        cloudwatch: {
+            instances: [{
+                accessKeyId: 'YOUR_ACCESS_KEY_ID',
+                secretAccessKey: 'YOUR_SECRET_ACCESS_KEY',
+                region: "YOUR_REGION_1",
+                whitelist: ['YOUR_FULL_METRIC_NAME1']
+            }, {
+                accessKeyId: 'YOUR_ACCESS_KEY_ID',
+                secretAccessKey: 'YOUR_SECRET_ACCESS_KEY',
+                region: "YOUR_REGION_2",
+                whitelist: ['YOUR_FULL_METRIC_NAME2']
+            }]
+        }
+    }
+
+
 ## Tutorial
 
 This project was launched with a following [blog post/tutorial](http://blog.simpletask.se/post/aggregating-monitoring-statistics-for-aws-cloudwatch) describing the implementation chain from log4net to Cloudwatch on a Windows system.
