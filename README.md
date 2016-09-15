@@ -102,7 +102,8 @@ Using cloudwatch will incur a cost for each metric sent. In order to control you
             accessKeyId: 'YOUR_ACCESS_KEY_ID', 
             secretAccessKey: 'YOUR_SECRET_ACCESS_KEY', 
             region: 'YOUR_REGION',
-            whitelist: ['YOUR_FULL_METRIC_NAME']
+            whitelist: ['YOUR_FULL_METRIC_NAME'],
+            debug: false
         }
     }
 
