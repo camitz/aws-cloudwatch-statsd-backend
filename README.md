@@ -155,6 +155,71 @@ you can use the `instances` key under `cloudwatch` to configure a list of config
         }
     }
 
+## Mapping a Graphite key to a metric name + dimension
+
+You can map a metric key name to a new metricName and to a set of
+dimensions to pass to CloudWatch. For example if you have a
+graphite-like keys in the form:
+
+SERVICE_TYPE.INSTANCE_ID.connections.CONNECTION_ID.METRIC_NAME
+
+you might want to map this name to a corresponding CloudWatch metric
+with METRIC with dimensions serviceType, instanceId, connectionId
+and the metric value.
+
+For example if you have:
+
+prod.i-deadbeef42.connections.123.errors
+
+You may want to generate a metric with name "errors" and the following
+dimensions:
+
+     [
+        { Name: "serviceType", Value: "prod" },
+        { Name: "instanceId",  Value: "i-deadbeef42" },
+        { Name: "serviceType",  Value: "123" },
+     ]
+
+This can be done by defining a mapping function in the configuration
+mapNameToDimensionsFn field.
+
+The mapNameToDimensionsFn function must accept a function taking a
+metricName and a metricType (either "count" or "gauge" or "timer" or
+"set"), and returning an object in the form { metricName,
+metricDimensions } or null in case you want to skip to send the metric
+altogether.
+metricDimensions must be an array in the form [ { "Name": ...,
+"Value": ...}, ...,  { "Name:" ..., "Value: ... } ].
+
+Continuing with the former example, a valid implementation would be:
+
+        mapNameToDimensionsFn: function (metricName, metricType) {
+            // ignore the metricType
+
+            var dimensions = [];
+            var origMetricName = metricName;
+
+            console.log("matching: " + metricName);
+
+            if ((res = /([^.]+)\.([^.]+)\.connections\.([^.]+)\.(.*)/g.exec(metricName)) != null) {
+                // match rule: SERVICE_TYPE.INSTANCE_ID.connections.CONNECTION_ID.METRIC_NAME
+                dimensions = [
+                    { Name: "serviceType", Value: res[1] },
+                    { Name: "instanceId", Value: res[2] },
+                    { Name: "connectionId", Value: res[3] },
+                ];
+                metricName = res[4];
+            }
+            else {
+		console.log("discarding metric " + metricName);
+		return null;
+	    }
+
+            var res = { metricName: metricName, metricDimensions: dimensions };
+            console.log(origMetricName + " => " + JSON.stringify(res));
+            return res;
+        }
+
 
 ## Tutorial
 
