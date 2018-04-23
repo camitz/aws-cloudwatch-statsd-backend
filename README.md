@@ -10,7 +10,7 @@ Counters, timers, gauges and sets are all supported.
 
 ## Installation
 
-You need node.js installed on your system aswell as StatsD. Follow the instructions on their sites or see this [blog post/tutorial](http://blog.simpletask.se/post/aggregating-monitoring-statistics-for-aws-cloudwatch) on how to install these components on a Windows system.
+You need node.js installed on your system aswell as StatsD. Follow the instructions on their sites or see this [blog post/tutorial](http://blog.simpletask.se/aws-clouwadwatch-statsd-backend/) on how to install these components on a Windows system.
 
 The CloudWatch backend is an npm package that can be installed with the npm command which comes with your installation of node.js. Go to the [npm site](https://npmjs.org/) for more information.
 
